@@ -1,0 +1,45 @@
+# Django
+*.py[cod]
+__pycache__/
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+db.sqlite3
+.env
+.env.local
+.env.*.local
+venv/
+ENV/
+env/
+.vscode/
+.idea/
+*.log
+*.pot
+*.pyc
+*.pyo
+*.egg
+static/
+media/
+.DS_Store
+
+# Vite / Node
+node_modules/
+dist/
+.env.local
+.env.*.local
+*.local
+.vite/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# OS
+.DS_Store
+Thumbs.db

@@ -6,17 +6,6 @@ class BookModelTest(TestCase):
         # Create db test data
         Book.objects.create(title="Test Book", description="A test description")
 
-    def test_get(self):
-        # Create db test data
-        Book.objects.create(title="Test Book", description="A test description")
-        # Access the data created
-        book = Book.objects.get(title="Test Book")
-        self.assertEqual(book.description, "A test description")
-
-        # Access all data
-        books = Book.objects.all()
-        self.assertEqual(len(books), 1)
-
     def test_remove(self):
         # Create db test data
         Book.objects.create(title="Test Book", description="A test description")

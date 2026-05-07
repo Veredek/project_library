@@ -21,3 +21,16 @@ class BookViewSet(viewsets.ModelViewSet):
 
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
+
+    @action(detail=False, methods=['get'], url_path='by-category')
+    def get_books_by_category(self, request):
+        category = request.query_params.get('category')
+        if category:
+            books = Book.objects.filter(category=category)
+            serializer = self.get_serializer(books, many=True)
+            return Response(serializer.data)
+        else:
+            return Response(
+                {'detail': 'Parâmetro de categoria é obrigatório.'},
+                status=status.HTTP_400_BAD_REQUEST
+            )

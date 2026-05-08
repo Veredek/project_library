@@ -24,9 +24,10 @@ class BookViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['get'], url_path='by-category')
     def get_books_by_category(self, request):
+        queryset = self.filter_queryset(self.get_queryset())
         category = request.query_params.get('category')
         if category:
-            books = Book.objects.filter(category=category)
+            books = queryset.filter(category=category)
             serializer = self.get_serializer(books, many=True)
             return Response(serializer.data)
         else:

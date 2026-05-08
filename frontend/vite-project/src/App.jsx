@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import BookInput from "./components/book_input";
+import RadioInput from "./components/radio_input";
 function App() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -126,25 +128,9 @@ function App() {
         }}
       >
         {/* Título */}
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <label style={{ width: "100px", textAlign: "right" }}>Título:</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            style={{ flex: 1, padding: "8px", minWidth: "0" }}
-          />
-        </div>
+        <BookInput label={"Title"} value={title} setter={setTitle}/>
         {/* Descrição */}
-        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <label style={{ width: "100px", textAlign: "right" }}>Descrição:</label>
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            style={{ flex: 1, padding: "8px", minWidth: "0" }}
-          />
-        </div>
+        <BookInput label="Descrição:" value={description} setter={setDescription} />
         {/* Categoria */}
         <div style={{ display: "block", alignItems: "center", gap: "12px" }}>
           <select value={bookCategory} onChange={(e) => setBookCategory(e.target.value)}>
@@ -166,34 +152,13 @@ function App() {
         </button>
         {/* Filtro de categoria */}
         <label>
-          <input
-          type="radio"
-          name="filter"
-          value=""
-          checked={filterCategory === ""}
-          onChange={handleCategoryChange}
-          />
-          All
+          <RadioInput label="All" value="" checked={filterCategory === ""} onChange={handleCategoryChange}/>
         </label>
         <label>
-          <input
-          type="radio"
-          name="filter"
-          value="fiction"
-          checked={filterCategory === "fiction"}
-          onChange={handleCategoryChange}
-          />
-          Fiction
+          <RadioInput label="Fiction" value="fiction" checked={filterCategory === "fiction"} onChange={handleCategoryChange}/>
         </label>
         <label>
-          <input
-          type="radio"
-          name="filter"
-          value="adventure"
-          checked={filterCategory === "adventure"}
-          onChange={handleCategoryChange}
-          />
-          Adventure
+          <RadioInput label ="Adventure" value="adventure" checked={filterCategory === "adventure"} onChange={handleCategoryChange}/>
         </label>
       </form>
       {loading && <p>Carregando...</p>}
